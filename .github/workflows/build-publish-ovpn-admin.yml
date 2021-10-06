@@ -6,7 +6,7 @@
 name: Create and publish a Docker image ovpn-admin
 
 on:
-  create:
+  push:
     tags:
       - ovpn-admin.v*
 
