@@ -1,0 +1,8 @@
+FROM alpine:3.13
+WORKDIR /app
+RUN apk add --update bash easy-rsa  && \
+    ln -s /usr/share/easy-rsa/easyrsa /usr/local/bin && \
+    wget https://github.com/flant/ovpn-admin/releases/download/1.7.0/ovpn-admin-linux-amd64.tar.gz | tar xz -C /app && \
+    rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/*
+
+
