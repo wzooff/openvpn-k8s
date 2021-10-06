@@ -7,8 +7,7 @@ name: Create and publish a Docker image ovpn-admin
 
 on:
   push:
-    tags:
-      - ovpn-admin.v*
+    branches: [ master ]
 
 env:
   REGISTRY: ghcr.io
