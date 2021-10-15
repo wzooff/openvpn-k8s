@@ -1,3 +1,3 @@
-FROM flant/ovpn-admin:latest
+FROM flant/ovpn-admin:1.7.3
 # we dont need untested software )) https://github.com/pashcovich/openvpn-user#disclaimer
 RUN rm -rf /usr/local/bin/openvpn-user
