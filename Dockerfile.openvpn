@@ -1,5 +1,5 @@
 FROM alpine:3.13
-RUN apk add --update bash openvpn easy-rsa  && \
+RUN apk add --update bash openvpn=2.5.2-r0 easy-rsa  && \
     ln -s /usr/share/easy-rsa/easyrsa /usr/local/bin && \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/*
 

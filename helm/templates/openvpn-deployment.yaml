@@ -66,17 +66,20 @@ spec:
         ports:
         - containerPort: 8080 # TODO
           name: ovpn-admin
-        command: # ['sh', '-c', 'echo The app is running! && sleep 3600']
+        command:
           - /app/ovpn-admin
-          # - --debug
-          # - --verbose
-          # - --ovpn.server=127.0.0.1:{{ .Values.service.internalPort }}:tcp
-          # - --ovpn.service="{{ template "openvpn.fullname" . }}"
-          # - --ovpn.network="{{ .Values.openvpn.OVPN_NETWORK }}"
+          - --ovpn.network="{{ .Values.openvpn.OVPN_NETWORK }}"
           - --templates.clientconfig-path=/mnt/setup/client.conf.tpl
           - --easyrsa.path=/mnt/certs
           - --easyrsa.index-path=/mnt/certs/pki/index.txt
-          - --listen.port=8080 # TODO
+          #
+          ## TODO: implement access to k8s api so we can get ip
+          # - --ovpn.server.behindLB
+          # - --ovpn.service="{{ template "openvpn.fullname" . }}"
+          #
+{{- with .Values.ovpnAdmin.args }}
+{{ toYaml . | indent 10 }}
+{{- end }}
         volumeMounts:
           - mountPath: /mnt/setup
             name: openvpn
